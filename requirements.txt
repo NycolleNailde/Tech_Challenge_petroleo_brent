@@ -1,0 +1,11 @@
+pandas
+numpy
+datetime
+selenium
+scikit-learn
+matplotlib
+seaborn
+plotly
+statsmodels
+statsforecast
+streamlit
