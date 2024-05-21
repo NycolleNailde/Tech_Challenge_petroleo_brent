@@ -1,7 +1,7 @@
 import pandas as pd
 
 from Utils import webscraping_ipea
-from Utils import create_lag_feature, prev_week_gradient,plot_gradient
+from Utils import update_dataipea, prev_week_gradient,plot_gradient
 from Utils import prev_week_prophet
 
 import plotly.express as px
@@ -12,8 +12,8 @@ import pickle
 
 # webscraping dos dados mais recentes, para input dos modelos
 url = 'http://www.ipeadata.gov.br/ExibeSerie.aspx?module=m&serid=1650971490&oper=view'
-
-df_ipea = webscraping_ipea(url)
+update_dataipea(url)
+df_ipea = pd.read_csv('./data/df_ipea.csv')
 df_ipea['Data'] = pd.to_datetime(df_ipea['Data'],format='%Y-%m-%d')
 X_60= df_ipea.iloc[-60:,:]
 X_5= df_ipea.iloc[-5:,:]
@@ -25,7 +25,6 @@ modelo_prophet = pickle.load(open('modelo_prophet.pkl','rb'))
 # TRANSFORM: fazendo previsões
 
 # GradienteBoosting
-# input_grad = create_lag_feature(X_5)
 output_gr = prev_week_gradient(modelo_gradient,X_5)
 
 # FIGURA
