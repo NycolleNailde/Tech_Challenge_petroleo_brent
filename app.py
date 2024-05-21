@@ -121,6 +121,7 @@ with tab0:
     complexidade, a previsão precisa dos preços do petróleo requer modelos que possam capturar não apenas tendências 
     e sazonalidades, mas também responder a variações abruptas e não lineares nos dados. Por isso, esse deploy apresenta
     duas abordagens. Com uso dois modelos para a previsão desta série temporal: **Prophet** e **GradientBoostingRegressor**.
+    As previsões serão feitas partindo da última data em que o modelo foi treinado, até uma semana após a data atual.
 
     
  
