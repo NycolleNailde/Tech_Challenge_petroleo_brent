@@ -9,3 +9,5 @@ plotly
 statsmodels
 statsforecast
 streamlit
+prophet
+nbformat==5.10.4
